@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" href="calcu.css">
+</head>
+<body>
+
+<!-- Expression Display -->
+<input type="text" id="expression" readonly style="width: 300px;"><br><br>
+
+<!-- Result Display -->
+<input type="text" id="result" readonly style="width: 300px;"><br><br>
+
+<!-- Calculator Buttons -->
+<button onclick="appendToDisplay('7')">7</button>
+<button onclick="appendToDisplay('8')">8</button>
+<button onclick="appendToDisplay('9')">9</button>
+<button onclick="appendToDisplay('/')">/</button>
+<br>
+<button onclick="appendToDisplay('4')">4</button>
+<button onclick="appendToDisplay('5')">5</button>
+<button onclick="appendToDisplay('6')">6</button>
+<button onclick="appendToDisplay('*')">*</button>
+<br>
+<button onclick="appendToDisplay('1')">1</button>
+<button onclick="appendToDisplay('2')">2</button>
+<button onclick="appendToDisplay('3')">3</button>
+<button onclick="appendToDisplay('-')">-</button>
+<br>
+<button onclick="appendToDisplay('0')">0</button>
+<button onclick="clearDisplay()">C</button>
+<button onclick="calculate()">=</button>
+<button onclick="appendToDisplay('+')">+</button>
+
+<script>
+    // Function to append the clicked button value to the expression display
+    function appendToDisplay(value) {
+        document.getElementById("expression").value += value;
+    }
+
+    // Function to clear both expression and result displays
+    function clearDisplay() {
+        document.getElementById("expression").value = '';
+        document.getElementById("result").value = '';
+    }
+
+    // Function to calculate and display the result
+    function calculate() {
+        var expressionValue = document.getElementById("expression").value;
+        try {
+            // Evaluate the expression entered by the user
+            var result = eval(expressionValue);
+            // Display the result in the result box
+            document.getElementById("result").value = result;
+        } catch (error) {
+            // If there's an error in the expression, display an error message in the result box
+            document.getElementById("result").value = 'Error';
+        }
+    }
+</script>
+
+</body>
+</html>
